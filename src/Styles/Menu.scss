@@ -1,0 +1,83 @@
+@use "../Styles/index" as *;
+
+.cg-menu {
+  background-color: transparent;
+  padding: 1rem 10rem 0rem;
+  height: 5rem;
+  position: sticky;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  z-index: 1000;
+
+  background-color: rgba(0, 0, 0, 0.178);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  h1 {
+    font-family: "Shadows Into Light", cursive;
+  }
+
+  .menu-wrapper {
+    position: relative;
+
+    .btn {
+      .code-icon,
+      .menu-text {
+        transition: transform 0.25s ease;
+        font-weight: 700;
+        font-size: 1.5rem;
+
+        .code-icon.open {
+          transform: scale(1.15);
+        }
+      }
+    }
+
+    .c-menu {
+      width: 100%;
+      position: absolute;
+      border: 1px solid $primary;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      opacity: 0;
+      transform: translateY(-20px);
+      pointer-events: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        margin: 0.5rem 0 0 0;
+        background-color: rgba(0, 0, 0, 0.726);
+        backdrop-filter: blur(5px);
+        ul {
+          li {
+            a {
+              transition: transform 0.25s ease;
+              &:hover {
+                color: $secondary;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .cg-menu {
+    padding: 1rem 2rem;
+    background-color: #000000e0;
+    .menu-wrapper {
+      .c-menu {
+        right: 0;
+        left: auto;
+      }
+    }
+  }
+}
